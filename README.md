@@ -83,7 +83,7 @@ Este comando extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará 
 kflex batch -f flex_data/kmers.txt
 ```
 
-Este comando retornará os kmers e seus respectivas contagens.
+Este comando retornará os kmers e suas respectivas contagens.
 
 Por fim, principalmente para a área de análise e descoberta de motifs biológicos, podemos buscar todos os kmers com até *d* mutações. Este comando também faz busca em lote, portanto precisamos criar um arquivo com os kmers a serem pesquisados. Vamos usar o arquivo *flex_data/kmers.txt* criado anteriormente. O comando para buscar considerando *d* mutações é o seguinte:
 
