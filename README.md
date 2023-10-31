@@ -1,4 +1,4 @@
-# kflex + SMT: A Fast and Efficient Framework for Counting and Manipulating kmers
+# kflex: A Fast and Efficient Framework for Counting and Manipulating kmers
 
 ## Introdução
 
