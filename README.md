@@ -33,3 +33,13 @@ Os comandos abaixo foram testados no sistema operacional Ubuntu 22.04 LTS 64 bit
 Para instalar o KFLEX através do código fonte, faça download dos arquivos presentes no diretório ```source``` para um diretório local no seu computador. Após isso, basta executar o comando ``` make ```. Isso irá gerar um executável chamado ```kflex```. Após isso, basta seguir os 1 até 4, conforme foi explicado logo acima.
 
 ## Exemplo de uso
+Use: kflex options
+Options: 
+   count <Preprocessing data and count>
+   search <Search specific kmer and its counts>
+   dump <Extract hashmap of all kmers and its counts>
+   batch <Searching for many kmers>
+   dsearch <Searching for many kmers directly>
+   kdive <Searching for many kmers with d mutations>
+   khmap <Extract hashmap for k less or equal to kmax>
+
