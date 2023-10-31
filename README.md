@@ -72,12 +72,12 @@ kflex search AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
 Neste caso, será consultado se o 30-mer *AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA* está presente no dataset. Se sim, o programa retornará o kmer e sua contagem. Caso contrário, o valor retornado será zero.
 
-Podemos também consultar vários kmers ao mesmo tempo. Para isso, primeiro precisamos um arquivo com o kmers a serem pesquisados. Considere a instrução abaixo:
+Podemos também consultar vários kmers ao mesmo tempo. Para isso, primeiro precisamos criar um arquivo com o kmers a serem pesquisados. Considere a instrução abaixo:
 
 ```
 sort -k2nr < flex_data/hmap.txt | head -n 10 | awk '{print $1}' > flex_data/kmers.txt
 ```
-O comando acima extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em flex_data chamado *kmers.txt*. Podemos usar este arquivo como entrada para o comando de busca em batch:
+Este comando extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em flex_data chamado *kmers.txt*. Podemos usar este arquivo como entrada para o comando de busca em batch:
 
 ```
 kflex batch -f flex_data/kmers.txt
