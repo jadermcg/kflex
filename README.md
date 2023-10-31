@@ -1,26 +1,11 @@
 # kflex: A Fast and Efficient Framework for Counting and Manipulating kmers
 
-## Introdução
+## Introduction
 
-Breve descrição do projeto, seu objetivo e utilidade.
+## Instalation
 
-## Instalação
+### Prerequisites
 
-Instruções passo a passo para instalar o projeto e suas dependências.
+### Installation Steps
 
-### Pré-requisitos
-
-- Lista de pré-requisitos e como instalá-los.
-
-### Passos para Instalação
-
-1. Primeiro passo
-2. Segundo passo
-3. ...
-
-## Uso
-
-Exemplos de como usar o programa.
-
-```bash
-# Exemplo de comando
+## Use
