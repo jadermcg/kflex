@@ -128,7 +128,7 @@ int main(int argc, char **argv) {
 
     else if (main_arg == "batch") { // Searching for many kmers.
         if (argc < 4) {
-            std::cerr << "Use: kflex batch -i <path to kmers>\n";
+            std::cerr << "Use: kflex batch -f <path to kmers>\n";
             return -1;
         }
 
@@ -144,7 +144,7 @@ int main(int argc, char **argv) {
         for (auto i{2}; i < argc; i = i + 2) {
             std::string arg{argv[i]};
 
-            if (arg == "-i") {
+            if (arg == "-f") {
                 path2kmers = argv[i + 1];
             }
 
