@@ -1,0 +1,4 @@
+CXX = g++
+CXXFLAGS = -std=c++17 -O3 -march=native
+LDFLAGS = -L/lib/x86_64-linux-gnu -L/usr/lib
+LIBS = -lboost_filesystem -ltbb -llz4
