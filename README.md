@@ -9,7 +9,7 @@ Whether you are a researcher, a bioinformatician or a developer, KFLEX offers a 
 ## Introduction
 
 ## Instalation
-Os seguintes passos devem ser executados para a instalação do KFLEX.
+Os seguintes passos devem ser obedecidos para a correta instalação do KFLEX.
 
 ### Prerequisites and dependencies
 O programa `kflex` foi projetado para ser executado no sistema operacional Linux e possui as seguintes dependências:
@@ -20,15 +20,16 @@ O programa `kflex` foi projetado para ser executado no sistema operacional Linux
 - **Bibliotecas padrão do Linux**: libstdc++.so.6, libm.so.6, libgcc_s.so.1, e libc.so.6.
 
 ### Installation Steps
+O KFLEX pode ser utilizado diretamente através do arquivo binário presenta no diretório ```bin```ou compilado através do código fonte.
 
 ## Instalação através do arquivo binário
-Os comandos abaixo foram testados no sistema operacional Ubuntu 22.04 LTS. Para outros sistemas, por gentileza, consultar a documentação correspondente.
-- Primeiro, instale as dependências com a seguinte instrução: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev```.
-- Crie um diretório para armazenar o binário do KFLEX, por exemplo: ```mkdir /caminho/para/klex```.
-- Faça download do binário do kflex presente no diretório bin do GitHub e salve no diretório que foi criado acima.
-- Coloque o diretório acima no path para que ele possa ser executado de qualquer parte do sistema: ``` echo "export PATH=$PATH:/caminho/para/kflex" ```
+Os comandos abaixo foram testados no sistema operacional Ubuntu 22.04 LTS 64 bits. Para outros sistemas, por gentileza, consultar a documentação correspondente.
+1) Primeiro, instale as dependências com a seguinte instrução: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev```.
+2) Crie um diretório para armazenar o binário do KFLEX, por exemplo: ```mkdir /caminho/para/klex```.
+3) Faça download do binário do kflex presente no diretório bin do GitHub e salve no diretório que foi criado acima.
+4) Coloque o diretório acima no path para que ele possa ser executado de qualquer parte do sistema: ``` echo "export PATH=$PATH:/caminho/para/kflex" ```
   
 ## Instalação através da compilação do código fonte
-
+Para instalar o KFLEX através do código fonte, faça download dos arquivos presentes no diretório ```source``` para um diretório local no seu computador. Após isso, basta executar o comando ``` make ```. Isso irá gerar um executável chamado ```kflex```. Após isso, basta seguir os 2 até 4, conforme foi explicado logo acima.
 
 ## Exemplo de uso
