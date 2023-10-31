@@ -33,6 +33,8 @@ Os comandos abaixo foram testados no sistema operacional Ubuntu 22.04 LTS 64 bit
 Para instalar o KFLEX através do código fonte, faça download dos arquivos presentes no diretório ```source``` para um diretório local no seu computador. Após isso, basta executar o comando ``` make ```. Isso irá gerar um executável chamado ```kflex```. Após isso, basta seguir os 1 até 4, conforme foi explicado logo acima.
 
 ## Exemplo de uso
+Abaixo segue um exemplo que mostra como utilizar o programa de forma básica.
+
 ```
 Use: kflex options
 Options: 
@@ -44,3 +46,6 @@ Options:
    kdive <Searching for many kmers with d mutations>
    khmap <Extract hashmap for k less or equal to kmax>
 ```
+
+Primeiro, precisamos criar o banco de dados através do comando: ``` kflex count -i <fasta file> -k <kmer size> -p <sufix size> ```.
+Após isso, um diretório chamado ``` flex_data ``` será criado no mesmo diretório no qual o kflex foi executado. Após isso, podemos fazer a a extração dos kmers através da instrução: ``` kflex dump ```. Isso criará um arquivo chamado ```hmap.txt``` dentro de ```flex_data```com a contagem de todos os kmers. Além disso, é possível realizar pesquisas com o ``` kflex search -kmer <kmer to search> ```. O comando ```kflex batch -f <path to kmer> ``` faz o mesmo que o comando anterior, mas pode realizar a pesquisa em mais de um kmer ao mesmo tempo. O comando ``` kflex kdive -f <path to kmers> -d <umber of mutations>  ``` é particularmente últil para a análise e descoberta de motifs biológicos, pois permite pesquisa kmers com até d mutações. Por fim o ```khmap -k <size to kmer> ``` permite que hashmaps de tamanhos menores do que o valor de k empregado para contar os kmers inicialmente sejam extraídos.
