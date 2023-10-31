@@ -48,4 +48,47 @@ Options:
 ```
 
 Primeiro, precisamos criar o banco de dados através do comando: ``` kflex count -i <fasta file> -k <kmer size> -p <sufix size> ```.
-Após isso, um diretório chamado ``` flex_data ``` será criado no mesmo diretório no qual o KFLEX foi executado. Após isso, podemos fazer a a extração dos kmers através da instrução: ``` kflex dump ```. Isso criará um arquivo chamado ```hmap.txt``` dentro de ```flex_data```com a contagem de todos os kmers. Além disso, é possível realizar pesquisas com o ``` kflex search -kmer <kmer to search> ```. O comando ```kflex batch -f <path to kmer> ``` faz o mesmo que o comando anterior, porém pode realizar a pesquisa em mais de um kmer ao mesmo tempo. O comando ``` kflex kdive -f <path to kmers> -d <umber of mutations>  ``` é particularmente últil para a análise e descoberta de motifs biológicos, pois permite pesquisar kmers com até *d* mutações. Por fim o ```khmap -k <size to kmer> ``` permite que hashmaps de tamanhos menores do que o valor de *k* empregado inicialmente para criar o bando de dados de kmers sejam extraídos.
+Após isso, um diretório chamado *flex_data* será criado no mesmo diretório no qual o KFLEX foi executado. Após isso, podemos fazer a a extração dos kmers através da instrução: ``` kflex dump ```. Isso criará um arquivo chamado *hmap.txt* dentro de *flex_data* com a contagem de todos os kmers. Além disso, é possível realizar pesquisas com o ``` kflex search -kmer <kmer to search> ```. O comando ```kflex batch -f <path to kmer> ``` faz o mesmo que o comando anterior, porém pode realizar a pesquisa em mais de um kmer ao mesmo tempo. O comando ``` kflex kdive -f <path to kmers> -d <umber of mutations>  ``` é particularmente últil para a análise e descoberta de motifs biológicos, pois permite pesquisar kmers com até *d* mutações. Por fim o ```khmap -k <size to kmer> ``` permite que hashmaps de tamanhos menores do que o valor de *k* empregado inicialmente para criar o bando de dados de kmers sejam extraídos.
+
+Por exemplo, considere o dataset de exemplo 200000.fasta. Este dataset possui um total de 200 mil sequências com largura de 100pb cada. Para criar o banco de dados inicial, podemos executar:
+```
+kflex count -i 200000.fasta -k 30 -p 5
+```
+Isso criará um diretório *flex_data* e no qual será processado o banco de dados de kmers. Após isso, podemos extrair o mapa para todos os kmers de tamanho 30:
+
+```
+kflex dump
+```
+O comando acima criará um arquivo chamado *hmap.txt* com todos os kmers e suas respectivas contagens. Podemos ainda extrair mapas com valores de *k* entre 5 e 29. O comando abaixo dá o exemplo para *k = 18*:
+
+```
+kflex khmap -k 18
+```
+
+Podemos consultar também se um kmer se encontra no banco de dados. Para isso, usamos:
+
+```
+kflex search AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+```
+Neste caso, será consultado se o 30-mer *AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA* está presente no dataset. Se sim, o programa retornará o kmer e sua contagem. Caso contrário, o valor retornado será zero.
+
+Podemos também consultar vários kmers ao mesmo tempo. Para isso, primeiro precisamos um arquivo com o kmers a serem pesquisados. Considere a instrução abaixo:
+
+```
+sort -k2nr < flex_data/hmap.txt | head -n 10 | awk '{print $1}' > flex_data/kmers.txt
+```
+O comando acima extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em flex_data chamado *kmers.txt*. Podemos usar este arquivo como entrada para o comando de busca em batch:
+
+```
+kflex batch -f flex_data/kmers.txt
+```
+
+O comando retornará os kmers e seus respectivas contagens.
+
+Por fim, principalmente para a área de análise e descoberta de motifs biológicos, podemos buscar todos os kmers com até *d* mutações. Este comando também faz busca em lote, portanto precisamos criar um arquivo com os kmers a serem pesquisados. Vamos usar o arquivo *flex_data/kmers.txt* criado anteriormente. O comando para buscar considerando *d* mutações é o seguinte:
+
+```
+kflex kdive -f flex_data/kmers.txt -d 2
+```
+
+O comando acima buscará todos os kmers com até *d* mutações considerando todos os kmers pertencentes a *kmers.txt*. O algoritmo irá criar um diretório dentro de *flex_data* chamado *kdive_dir*. Dentro deste diretório, serão criados vários arquivos, um para cada kmer dentro de *kmers.txt*. Dentro deste arquivos, serão colocados todos os kmers com até *d* mutações. Esses dados podem ser usados posteriormente para criar modelos probabilísticos e ajudando assim na busca por motifs biologicamente releventes.
