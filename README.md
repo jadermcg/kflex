@@ -77,13 +77,13 @@ Podemos também consultar vários kmers ao mesmo tempo. Para isso, primeiro prec
 ```
 sort -k2nr < flex_data/hmap.txt | head -n 10 | awk '{print $1}' > flex_data/kmers.txt
 ```
-Este comando extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em flex_data chamado *kmers.txt*. Podemos usar este arquivo como entrada para o comando de busca em batch:
+Este comando extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em *flex_data* chamado *kmers.txt*. Podemos usar o arquivo *kmers.txt* como entrada para o comando de busca em batch:
 
 ```
 kflex batch -f flex_data/kmers.txt
 ```
 
-O comando retornará os kmers e seus respectivas contagens.
+Este comando retornará os kmers e seus respectivas contagens.
 
 Por fim, principalmente para a área de análise e descoberta de motifs biológicos, podemos buscar todos os kmers com até *d* mutações. Este comando também faz busca em lote, portanto precisamos criar um arquivo com os kmers a serem pesquisados. Vamos usar o arquivo *flex_data/kmers.txt* criado anteriormente. O comando para buscar considerando *d* mutações é o seguinte:
 
