@@ -92,3 +92,6 @@ kflex kdive -f flex_data/kmers.txt -d 2
 ```
 
 O comando acima buscará todos os kmers com até *d* mutações considerando todos os kmers pertencentes a *kmers.txt*. O algoritmo irá criar um diretório dentro de *flex_data* chamado *kdive_dir*. Dentro deste diretório, serão criados vários arquivos, um para cada kmer dentro de *kmers.txt*. Dentro deste arquivos, serão colocados todos os kmers com até *d* mutações. Esses dados podem ser usados posteriormente para criar modelos probabilísticos e ajudando assim na busca por motifs biologicamente releventes.
+
+## When to use KFLEX?
+KFLEX was built with the main objective of assisting in the analysis of biological motifs. However, it can be used in any situation in which it is necessary to count kmers or perform operations on kmers, such as knowing which are the most frequent or which are the most frequent considering a certain number of mutations.
