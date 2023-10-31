@@ -10,8 +10,18 @@ Whether you are a researcher, a bioinformatician or a developer, KFLEX offers a 
 
 ## Instalation
 
-### Prerequisites
+### Prerequisites and dependencies
+O programa `kflex` foi projetado para ser executado no sistema operacional Linux e possui as seguintes dependências:
+
+- **GLIBCXX_3.4.29** e **GLIBC_2.34**: Estas são versões específicas das bibliotecas libstdc++ (parte da biblioteca padrão C++) e glibc (biblioteca C padrão no Linux). Certifique-se de que sua distribuição Linux tenha as versões apropriadas instaladas.
+- **Boost Filesystem**: Uma biblioteca do Boost para operações de sistema de arquivos.
+- **Intel TBB**: Threading Building Blocks, uma biblioteca que suporta a paralelização e execução eficiente de programas.
+- **Bibliotecas padrão do Linux**: libstdc++.so.6, libm.so.6, libgcc_s.so.1, e libc.so.6.
 
 ### Installation Steps
+- Primeiro, instale as dependências. Se você estiver usando o sistema operacional Linux/Ubuntu, poderá executar o comando abaixo:
+  ```
+  sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev
+  ```
 
 ## Use
