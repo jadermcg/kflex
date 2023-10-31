@@ -19,9 +19,11 @@ O programa `kflex` foi projetado para ser executado no sistema operacional Linux
 - **Bibliotecas padrão do Linux**: libstdc++.so.6, libm.so.6, libgcc_s.so.1, e libc.so.6.
 
 ### Installation Steps
-- Primeiro, instale as dependências. Se você estiver usando o sistema operacional Linux/Ubuntu, poderá executar o comando abaixo:
+- Primeiro, instale as dependências. Se você estiver usando o sistema operacional Linux/Ubuntu, poderá executar o comando abaixo. Para outras distribuições Linux, será necessário consultar a documentação do sistema
   ```
   sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev
   ```
+## Problemas
+- Se ao executar o kflex, o sistema retornar o erro xxx, execute o seguinte comando: ```sudo ln -s /usr/lib/x86_64-linux-gnu/libtbb.so /usr/lib/x86_64-linux-gnu/libtbb.so.12```
 
 ## Use
