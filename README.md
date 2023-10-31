@@ -8,32 +8,31 @@ One of KFLEX's most notable features is its ability to work with large volumes o
 Whether you are a researcher, a bioinformatician or a developer, KFLEX offers a reliable and efficient solution for all your kmer-related needs.
 
 ## Instalation
-Os seguintes passos devem ser obedecidos para a correta instalação do KFLEX.
+The following steps must be followed for the correct installation of KFLEX.
 
 ### Prerequisites and dependencies
-O programa `kflex` foi projetado para ser executado no sistema operacional Linux e possui as seguintes dependências:
+The `kflex` program is designed to run on the Linux operating system and has the following dependencies:
 
-- **GLIBCXX_3.4.29** e **GLIBC_2.34**: Estas são versões específicas das bibliotecas libstdc++ (parte da biblioteca padrão C++) e glibc (biblioteca C padrão no Linux). Certifique-se de que sua distribuição Linux tenha as versões apropriadas instaladas.
-- **Boost Filesystem**: Uma biblioteca do Boost para operações de sistema de arquivos.
-- **Intel TBB**: Threading Building Blocks, uma biblioteca que suporta a paralelização e execução eficiente de programas.
-- **Bibliotecas padrão do Linux**: libstdc++.so.6, libm.so.6, libgcc_s.so.1, e libc.so.6.
+- **GLIBCXX_3.4.29** e **GLIBC_2.34**: These are specific versions of the libstdc++ (part of the C++ standard library) and glibc (standard C library on Linux) libraries. Make sure your Linux distribution has the appropriate versions installed.
+- **Boost Filesystem**: A Boost library for file system operations.
+- **Intel TBB**: Threading Building Blocks, a library that supports parallelization and efficient program execution.
+- **Linux standard libraries**: libstdc++.so.6, libm.so.6, libgcc_s.so.1, e libc.so.6.
 
 ### Installation Steps
-O KFLEX pode ser utilizado diretamente através do arquivo binário presenta no diretório ```bin```ou compilado através do código fonte.
+KFLEX can be used directly through the binary file present in the ```bin``` directory or compiled through the source code.
 
-## Instalação através do arquivo binário
-Os comandos abaixo foram testados no sistema operacional Ubuntu 22.04 LTS 64 bits. Para outros sistemas, por gentileza, consultar a documentação correspondente.
-1) Primeiro, instale as dependências com a seguinte instrução: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev```.
-2) Crie um diretório para armazenar o binário do KFLEX, por exemplo: ```mkdir /caminho/para/klex```.
-3) Faça download do binário do kflex presente no diretório bin do GitHub e salve no diretório que foi criado acima.
-4) Coloque o diretório acima no path para que ele possa ser executado de qualquer parte do sistema: ``` echo "export PATH=$PATH:/caminho/para/kflex" ```
+## Installation using binary file
+The commands below were tested on the Ubuntu 22.04 LTS 64-bit operating system. For other systems, please consult the corresponding documentation.
+1) First, install the dependencies with the following instruction: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev```.
+2) Create a directory to store the KFLEX binary, for example: ```mkdir /path/to/klex```.
+3) Download the kflex binary from the GitHub bin directory and save it in the directory created above.
+4) Place the above directory in the path so that it can be executed from any part of the system: ``` echo "export PATH=$PATH:/path/to/kflex" ```
   
-## Instalação através da compilação do código fonte
-Para instalar o KFLEX através do código fonte, faça download dos arquivos presentes no diretório ```source``` para um diretório local no seu computador. Após isso, basta executar o comando ``` make ```. Isso irá gerar um executável chamado ```kflex```. Após isso, basta seguir os 1 até 4, conforme foi explicado logo acima.
+## Installation using source code compilation
+To install KFLEX via source code, download the files in the ```source``` directory to a local directory on your computer. After that, just run the ``` make ``` command. This will generate an executable called ```kflex```. After that, just follow 1 to 4, as explained above.
 
-## Exemplo de uso
-Abaixo segue um exemplo que mostra como utilizar o programa de forma básica.
-
+## Example of use
+Below is an example that shows how to use the program in a basic way.
 ```
 Use: kflex options
 Options: 
@@ -46,51 +45,51 @@ Options:
    khmap <Extract hashmap for k less or equal to kmax>
 ```
 
-Primeiro, precisamos criar o banco de dados através do comando: ``` kflex count -i <fasta file> -k <kmer size> -p <sufix size> ```.
-Após isso, um diretório chamado *flex_data* será criado no mesmo diretório no qual o KFLEX foi executado. Após isso, podemos fazer a a extração dos kmers através da instrução: ``` kflex dump ```. Isso criará um arquivo chamado *hmap.txt* dentro de *flex_data* com a contagem de todos os kmers. Além disso, é possível realizar pesquisas com o ``` kflex search -kmer <kmer to search> ```. O comando ```kflex batch -f <path to kmer> ``` faz o mesmo que o comando anterior, porém pode realizar a pesquisa em mais de um kmer ao mesmo tempo. O comando ``` kflex kdive -f <path to kmers> -d <umber of mutations>  ``` é particularmente últil para a análise e descoberta de motifs biológicos, pois permite pesquisar kmers com até *d* mutações. Por fim o ```khmap -k <size to kmer> ``` permite que hashmaps de tamanhos menores do que o valor de *k* empregado inicialmente para criar o bando de dados de kmers sejam extraídos.
+First, we need to create the database using the command: ``` kflex count -i <fasta file> -k <kmer size> -p <sufix size> ```.
+After this, a directory called *flex_data* will be created in the same directory in which KFLEX was run. After that, we can extract the kmers using the instruction: ``` kflex dump ```. This will create a file called *hmap.txt* inside *flex_data* with the count of all kmers. Additionally, it is possible to perform searches with ``` kflex search -kmer <kmer to search> ```. The command ```kflex batch -f <path to kmer> ``` does the same as the previous command, but it can perform the search on more than one kmer at the same time. The command ``` kflex kdive -f <path to kmers> -d <umber of mutations> ``` is particularly useful for the analysis and discovery of biological motifs, as it allows searching for kmers with up to *d* mutations. Finally, ```khmap -k <size to kmer> ``` allows hashmaps of sizes smaller than the value of *k* initially used to create the kmer database to be extracted.
 
-Por exemplo, considere o dataset de exemplo 200000.fasta. Este dataset possui um total de 200 mil sequências com largura de 100pb cada. Para criar o banco de dados inicial, podemos executar:
+For example, consider the example dataset 200000.fasta. This dataset has a total of 200 thousand sequences with a width of 100bp each. To create the initial database, we can run:
 ```
 kflex count -i 200000.fasta -k 30 -p 5
 ```
-Isso criará um diretório *flex_data* e no qual será processado o banco de dados de kmers. Após isso, podemos extrair o mapa para todos os kmers de tamanho 30:
+This will create a *flex_data* directory in which the kmer database will be processed. After that, we can extract the map for all kmers of size 30:
 
 ```
 kflex dump
 ```
-O comando acima criará um arquivo chamado *hmap.txt* com todos os kmers e suas respectivas contagens. Podemos ainda extrair mapas com valores de *k* entre 5 e 29. O comando abaixo dá o exemplo para *k = 18*:
+The above command will create a file called *hmap.txt* with all kmers and their respective counts. We can also extract maps with *k* values between 5 and 29. The command below gives the example for *k = 18*:
 
 ```
 kflex khmap -k 18
 ```
 
-Podemos consultar também se um kmer se encontra no banco de dados. Para isso, usamos:
+We can also check whether a kmer is in the database. To do this, we use:
 
 ```
-kflex search AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+kflex search AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 ```
-Neste caso, será consultado se o 30-mer *AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA* está presente no dataset. Se sim, o programa retornará o kmer e sua contagem. Caso contrário, o valor retornado será zero.
+In this case, it will be queried whether the 30-mer *AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA* is present in the dataset. If yes, the program will return the kmer and its count. Otherwise, the returned value will be zero.
 
-Podemos também consultar vários kmers ao mesmo tempo. Para isso, primeiro precisamos criar um arquivo com o kmers a serem pesquisados. Considere a instrução abaixo:
+We can also query several kmers at the same time. To do this, we first need to create a file with the kmers to be searched. Consider the instruction below:
 
 ```
 sort -k2nr < flex_data/hmap.txt | head -n 10 | awk '{print $1}' > flex_data/kmers.txt
 ```
-Este comando extrairá do mapa *hmap.txt* os 10 kmers mais frequentes e criará um arquivo em *flex_data* chamado *kmers.txt*. Podemos usar o arquivo *kmers.txt* como entrada para o comando de busca em batch:
+This command will extract the 10 most frequent kmers from the *hmap.txt* map and create a file in *flex_data* called *kmers.txt*. We can use the *kmers.txt* file as input for the batch search command:
 
 ```
 kflex batch -f flex_data/kmers.txt
 ```
 
-Este comando retornará os kmers e suas respectivas contagens.
+This command will return the kmers and their respective counts.
 
-Por fim, principalmente para a área de análise e descoberta de motifs biológicos, podemos buscar todos os kmers com até *d* mutações. Este comando também faz busca em lote, portanto precisamos criar um arquivo com os kmers a serem pesquisados. Vamos usar o arquivo *flex_data/kmers.txt* criado anteriormente. O comando para buscar considerando *d* mutações é o seguinte:
+Finally, mainly for the area of analysis and discovery of biological motifs, we can search for all kmers with up to *d* mutations. This command also performs a batch search, so we need to create a file with the kmers to be searched. Let's use the *flex_data/kmers.txt* file created previously. The command to search considering *d* mutations is the following:
 
 ```
 kflex kdive -f flex_data/kmers.txt -d 2
 ```
 
-O comando acima buscará todos os kmers com até *d* mutações considerando todos os kmers pertencentes a *kmers.txt*. O algoritmo irá criar um diretório dentro de *flex_data* chamado *kdive_dir*. Dentro deste diretório, serão criados vários arquivos, um para cada kmer dentro de *kmers.txt*. Dentro deste arquivos, serão colocados todos os kmers com até *d* mutações. Esses dados podem ser usados posteriormente para criar modelos probabilísticos e ajudando assim na busca por motifs biologicamente releventes.
+The command above will search for all kmers with up to *d* mutations considering all kmers belonging to *kmers.txt*. The algorithm will create a directory inside *flex_data* called *kdive_dir*. Within this directory, several files will be created, one for each kmer within *kmers.txt*. Within this file, all kmers with up to *d* mutations will be placed. This data can later be used to create probabilistic models and thus help in the search for biologically relevant motifs.
 
 ## When to use KFLEX?
 KFLEX was built with the main objective of assisting in the analysis of biological motifs. However, it can be used in any situation in which it is necessary to count kmers or perform operations on kmers, such as knowing which are the most frequent or which are the most frequent considering a certain number of mutations.
