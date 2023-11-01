@@ -19,9 +19,8 @@ void createBins(const std::vector<std::string> &fasta, const int &k, const int &
   tbb::blocked_range<size_t> range(0, n);
   tbb::parallel_for(range, [&](const auto &r) {
       for (auto i{r.begin()}; i < r.end(); ++i) {
-          const auto &seq { fasta[i] };
           for (auto j{0}; j < m; ++j) {
-              const auto &prefix{ seq.substr(j, prefix_size) };
+              const auto &prefix{ fasta[i].substr(j, prefix_size) };
               bins[prefix].push_back(i * m + j);
           }
       }

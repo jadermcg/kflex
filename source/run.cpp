@@ -201,8 +201,8 @@ int main(int argc, char **argv) {
     }
 
     else if (main_arg == "kdive") {
-        if (argc < 8) {
-            std::cerr << "Use: kflex kdive -i <path to fasta> -f <path to kmers> -d <number of mutations>\n";
+        if (argc < 6) {
+            std::cerr << "Use: kflex kdive -f <path to kmers> -d <number of mutations>\n";
             return -1;
         }
 
@@ -219,11 +219,7 @@ int main(int argc, char **argv) {
         for (auto i{2}; i < argc; i = i + 2) {
             std::string arg{argv[i]};
 
-            if (arg == "-i") {
-                path = argv[i + 1];
-            }
-
-            else if (arg == "-f") {
+            if (arg == "-f") {
                 path2kmers = argv[i + 1];
             }
 
@@ -252,8 +248,8 @@ int main(int argc, char **argv) {
     }
 
     else if (main_arg == "khmap") {
-        if (argc < 6) {
-            std::cerr << "Use: kflex khmap -i <path to fasta> -k <size to kmers for extraction hashmap>\n";
+        if (argc < 4) {
+            std::cerr << "Use: kflex khmap -k <size of kmers>\n";
             return -1;
         }
 
@@ -269,11 +265,7 @@ int main(int argc, char **argv) {
         for (auto i{2}; i < argc; i = i + 2) {
             std::string arg{argv[i]};
 
-            if (arg == "-i") {
-                path = argv[i + 1];
-            }
-
-            else if (arg == "-k") {
+            if (arg == "-k") {
                 k = std::stoi(argv[i + 1]);
             }
 
