@@ -23,7 +23,7 @@ KFLEX can be used directly through the binary file present in the ```bin``` dire
 
 ## Installation using binary file
 The commands below were tested on the Ubuntu 22.04 LTS 64-bit operating system. For other systems, please consult the corresponding documentation.
-1) First, install the dependencies with the following instruction: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev```.
+1) First, install the dependencies with the following instruction: ``` sudo apt update && sudo apt install libstdc++6 libgcc1 libc6 libboost-filesystem-dev libtbb-dev libhdf5-dev libboost-iostreams-dev```.
 2) Create a directory to store the KFLEX binary, for example: ```mkdir /path/to/klex```.
 3) Download the kflex binary from the GitHub bin directory and save it in the directory created above.
 4) Place the above directory in the path so that it can be executed from any part of the system: ``` echo "export PATH=$PATH:/path/to/kflex" ```
